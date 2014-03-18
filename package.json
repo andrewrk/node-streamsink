@@ -1,6 +1,6 @@
 {
   "name": "streamsink",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "pipe to a buffer, then create readable streams from it",
   "main": "index.js",
   "scripts": {
