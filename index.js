@@ -28,8 +28,8 @@ StreamSink.prototype.createReadStream = function(options) {
   return s;
 };
 
-StreamSink.prototype.toString = function(arg) {
-  return this.buffer.map(function(buf) { return buf.toString(arg); }).join('');
+StreamSink.prototype.toString = function(encoding, start, end) {
+  return this.toBuffer().toString(encoding, start, end);
 };
 
 StreamSink.prototype.toBuffer = function() {

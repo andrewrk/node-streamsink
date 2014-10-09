@@ -15,7 +15,7 @@ sink.on('finish', function() {
   // sink has now buffered foo.txt
   sink.createReadStream().pipe(someDestination);
 
-  // or use toString([encoding])
+  // or use toString([encoding], [start], [end])
   console.log(sink.toString('utf8'));
 
   // or use toBuffer()
