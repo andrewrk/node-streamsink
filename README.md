@@ -1,6 +1,7 @@
 # node-streamsink
 
-See also [bl](https://github.com/rvagg/bl).
+Pipe a stream to a `StreamSink`, and then you can create a `ReadableStream`,
+`String`, or `Buffer` from the `StreamSink`.
 
 ## Usage
 
