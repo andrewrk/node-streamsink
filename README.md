@@ -21,4 +21,7 @@ sink.on('finish', function() {
   // or use toBuffer()
   sink.toBuffer();
 });
+
+// you can also create instances from a list of buffers
+var sink = StreamSink.fromBufferList([new Buffer("aoeu"), new Buffer("foo")]);
 ```

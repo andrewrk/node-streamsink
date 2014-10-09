@@ -11,6 +11,13 @@ sink.on('finish', function() {
     assert.strictEqual(buf.length, 2);
     assert.strictEqual(buf[0], 104);
     assert.strictEqual(buf[1], 105);
+
+    var s2 = StreamSink.fromBuffer(new Buffer("aoeu"));
+    assert.strictEqual(s2.toString(), "aoeu");
+
+    var s3 = StreamSink.fromBufferList([new Buffer("aoeu"), new Buffer("asdf")]);
+    assert.strictEqual(s3.toString(), "aoeuasdf");
+
     console.log("OK");
   });
   sink.createReadStream().pipe(newSink);

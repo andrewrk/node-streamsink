@@ -2,6 +2,22 @@ var stream = require('stream');
 var util = require('util');
 
 module.exports = StreamSink;
+StreamSink.fromBuffer = fromBuffer;
+StreamSink.fromBufferList = fromBufferList;
+
+function fromBuffer(buffer, options) {
+  return fromBufferList([buffer], options);
+}
+
+function fromBufferList(bufferList, options) {
+  var sink = new StreamSink(options);
+  sink.buffer = bufferList;
+  sink.length = 0;
+  bufferList.forEach(function(buffer) {
+    sink.length += buffer.length;
+  });
+  return sink;
+}
 
 util.inherits(StreamSink, stream.Writable);
 function StreamSink(options) {
