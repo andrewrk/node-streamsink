@@ -7,10 +7,12 @@ util.inherits(StreamSink, stream.Writable);
 function StreamSink(options) {
   stream.Writable.call(this, options);
   this.buffer = [];
+  this.length = 0;
 }
 
 StreamSink.prototype._write = function(chunk, encoding, callback) {
   this.buffer.push(chunk);
+  this.length += chunk.length;
   callback();
 };
 
@@ -28,4 +30,8 @@ StreamSink.prototype.createReadStream = function(options) {
 
 StreamSink.prototype.toString = function(arg) {
   return this.buffer.map(function(buf) { return buf.toString(arg); }).join('');
+};
+
+StreamSink.prototype.toBuffer = function() {
+  return Buffer.concat(this.buffer, this.length);
 };
